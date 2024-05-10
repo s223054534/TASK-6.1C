@@ -1,20 +1,20 @@
 pipeline {
    agent any
    stages {
- stage('Build') {
- steps {
- echo "Use Maven to build the code."
- }
- }
- stage('Unit and Integration Tests') {
- steps {
- echo "Run unit and integration tests using Selenium"
- }
- post {
- success {
- echo "Unit and Integration Testing was successful."
- emailext(
- to: 's223054534@deakin.edu.au',
+     stage('Build') {
+        steps {
+             echo "Use Maven to build the code."
+      }
+   }
+   stage('Unit and Integration Tests') {
+   steps {
+   echo "Run unit and integration tests using Selenium"
+     }
+  post {
+  success {
+  echo "Unit and Integration Testing was successful."
+  emailext(
+  to: 's223054534@deakin.edu.au',
  subject: "Tests Passed: ${currentBuild.currentResult}",
  body: "Unit and Integration tests passed successfully.",
  attachLog: true
